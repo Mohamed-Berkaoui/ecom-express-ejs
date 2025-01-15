@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('./navbar.ejs') %>
+
+    <table class="table mt-5 w-75 text-center m-auto border">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">title</th>
+          <th scope="col">price</th>
+          <th scope="col">category</th>
+          <th scope="col">delete</th>
+          <th scope="col">update</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <% products.forEach(element => { %>
+        <tr>
+          <th scope="row"><%= element.id %></th>
+          <td><%= element.title %></td>
+          <td><%= element.price %></td>
+          <td><%= element.category %></td>
+          <td>
+            <form action="/delete/<%= element.id %>" method="post">
+              <button type="submit"class="btn btn-primary" >delete</button>
+            </form>
+          </td>
+         
+          <td>  <a href="/update/<%= element.id %>" class="btn btn-primary">update</a></td>
+        </tr>
+
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('./navbar.ejs') %>
+    <form
+      action="/updateproduct/<%= product.id %>"
+      method="post"
+      style="
+        width: 70%;
+        padding: 20px;
+        margin: auto;
+        background-color: antiquewhite;
+      "
+    >
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">title</label>
+        <input
+          type="text"
+          value="<%= product.title %>"
+          name="title"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">price</label>
+        <input
+          type="number"
+          value="<%= product.price %>"
+          name="price"
+          class="form-control"
+          id="exampleInputPassword1"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">image</label>
+        <input
+          type="url"
+          name="image"
+          value="<%= product.image %>"
+          class="form-control"
+          id="exampleInputPassword1"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label"
+          >description</label
+        >
+        <input
+          type="text"
+          value="<%= product.description %>"
+          name="description"
+          class="form-control"
+          id="exampleInputPassword1"
+        />
+      </div>
+      <div class="mb-3 form-check">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        <select
+          class="form-select"
+          name="category"
+          aria-label="Default select example"
+        >
+          <% if (product.category=="women's clothing" ){ %>
+          <option value="women's clothing" selected>women's clothing</option>
+          <% } else { %>
+          <option value="women's clothing" selected>women's clothing</option>
+          <% } %>
+          <% if (product.category=="electronics" ){ %>
+            <option value="electronics" selected>electronics</option>
+            <% } else { %>
+                <option value="electronics">electronics</option>
+            <% } %>
+            <% if (product.category=="jewelery" ){ %>
+                <option value="jewelery" selected>jewelery</option>
+                <% } else { %>
+                    <option value="jewelery">jewelery</option>
+                <% } %>
+
+                <% if (product.category=="men's clothing" ){ %>
+                    <option value="men's clothing" selected>men's clothing</option>
+                    <% } else { %>
+                        <option value="men's clothing">men's clothing</option>
+                    <% } %>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </body>
+</html>
